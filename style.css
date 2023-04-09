@@ -1,0 +1,106 @@
+*{
+
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+
+body{
+    background-color: #f2f2f2;
+    margin: 0 20px;
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(49, 49, 49);
+}
+.wrapper{
+    max-width: 450px;
+    margin: 150px auto;
+}
+
+.wrapper .search-bar{
+    position: relative;
+    background:#fff;
+    width: 100%;
+    border-radius:15px;
+    box-shadow: rgba(201, 201, 201, 0.1) 0px 7px 10px;
+}
+
+.search-bar input{
+    height: 55px;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius:15px;
+    padding: 0 60px 0 53px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+input::placeholder{
+    letter-spacing: 0.4px;
+    font-size: 18px;
+    font-weight:500;
+    color:#a1a1a1;
+}
+
+.search-bar .icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 55px;
+    font-size: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    color:#644bff;
+    cursor: pointer;
+}
+
+.search-bar .autocom-box{
+    border-top:1px solid #efefef ;
+    padding: 0px;
+    max-height: 280px;
+    overflow-y: auto;
+    opacity: 0;
+    pointer-events: none;
+}
+.search-bar.active .autocom-box{
+    padding: 10px 8px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.autocom-box li{
+    list-style: none;
+    padding: 8px 12px;
+    width: 100%;
+    cursor: default;
+    border-radius:10px;
+    display: none;
+}
+.search-bar.active .autocom-box li{
+    display: block;
+}
+
+.autocom-box li:hover{
+    background: #efefef;
+}
+
+.delete-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 55px;
+    font-size: 24px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    cursor: pointer;
+    color: #abb1b8;
+  }
