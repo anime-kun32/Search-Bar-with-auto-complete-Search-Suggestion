@@ -1,5 +1,5 @@
 const fetchSuggestions = async () => {
-  const response = await fetch('https://api.example.com/suggestions');
+  const response = await fetch('https://api-aniwatch.onrender.com/anime/search/suggest');
   const data = await response.json();
   const suggestions = data.suggestions.map(item => item.name);
   return suggestions;
