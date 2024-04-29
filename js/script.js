@@ -5,7 +5,7 @@ const suggBox = document.querySelector(".autocom-box");
 
 // Function to fetch suggestions from the API
 async function fetchSuggestionsFromApi(input) {
-  const response = await fetch(`https://api-aniwatch.onrender.com/anime/search/suggest?q=${input}`);
+  const response = await fetch(`https://aniwatch-api-net.vercel.app/anime/search/suggest?q=${input}`);
   const data = await response.json();
   return data.suggestions;
 }
