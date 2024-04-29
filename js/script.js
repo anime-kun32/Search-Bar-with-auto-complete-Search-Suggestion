@@ -18,9 +18,7 @@ inputBox.onkeyup = async (e) => {
     const suggestions = await fetchSuggestionsFromApi(userData);
     array = suggestions.map((data) => data.name);
     array = array.filter((name) => name.toLowerCase().startsWith(userData.toLowerCase()));
-    array = array.map((data) => {
-      return `<li><a href="https://aniteams.wuaze.com/home/anime-details?id=${data.id}">${data.name}</a></li>`;
-    });
+    array = array.map((name) => '<li>' + name + '</li>');
     searchBar.classList.add("active");
     showSuggestions(array);
     let allList = suggBox.querySelectorAll("li");
@@ -46,4 +44,4 @@ function showSuggestions(list) {
     listData = list.join('');
   }
   suggBox.innerHTML = listData;
-}
+} 
