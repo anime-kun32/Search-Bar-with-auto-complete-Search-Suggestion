@@ -5,7 +5,7 @@ const suggBox = document.querySelector(".autocom-box");
 
 // Function to fetch suggestions from the API
 async function fetchSuggestionsFromApi(input) {
-  const response = await fetch(`https://aniwatch-api-net.vercel.app/anime/search/suggest?q=${input}`);
+  const response = await fetch(`https://aniwatch-api-net.vercel.app/api/v2/hianime/search/suggestion?q=${input}`);
   const data = await response.json();
   return data.suggestions;
 }
@@ -15,20 +15,25 @@ inputBox.onkeyup = async (e) => {
   let userData = e.target.value;
   let array = [];
   if (userData) {
-    const suggestions = await fetchSuggestionsFromApi(userData);
-    array = suggestions.map((data) => data.name);
-    array = array.filter((name) => name.toLowerCase().startsWith(userData.toLowerCase()));
-    array = array.map((name) => '<li>' + name + '</li>');
-    searchBar.classList.add("active");
-    showSuggestions(array);
-    let allList = suggBox.querySelectorAll("li");
-    allList.forEach((item) => {
-      item.addEventListener("click", () => select(item));
-    });
+    const response = await fetchSuggestionsFromApi(userData);
+    if (response.success) {
+      array = response.data.suggestions
+        .filter((data) => data.name.toLowerCase().startsWith(userData.toLowerCase()))
+        .map((data) => `<li>${data.name}</li>`);
+      
+      searchBar.classList.add("active");
+      showSuggestions(array);
+      
+      let allList = suggBox.querySelectorAll("li");
+      allList.forEach((item) => {
+        item.addEventListener("click", () => select(item));
+      });
+    }
   } else {
     searchBar.classList.remove("active");
   }
 }
+
 
 function select(element) {
   let selectUserData = element.textContent;
