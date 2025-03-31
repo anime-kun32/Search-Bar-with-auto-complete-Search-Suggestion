@@ -2,7 +2,7 @@ let searchQuery = "monster"; // Search term
 let suggestions = [];
 
 // Fetch suggestions from API
-fetch(`https://api-aniwatch.onrender.com/anime/search/suggest?q=${searchQuery}`)
+fetch(`https://aniwatch-api-net.vercel.app/api/v2/hianime/search/suggestion?q=${searchQuery}`)
   .then(response => response.json())
   .then(data => {
     suggestions = data.map(suggestion => suggestion.name);
